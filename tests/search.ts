@@ -9,14 +9,14 @@ let tdd3 = [45, 422, 33, 355, 6, 12, 7, 99, 5576, 2345, 5678, 34523452, 4567342,
 describe('Search', function () {
   it('Linear 1', function () {
     let t1 = new Search(tdd1);
-    expect(t1.linearSearch(3)).to.equal(3);
+    expect(t1.binarySearch(3)).to.equal(3);
   });
   it('Linear 2', function () {
     let t2 = new Search(tdd2);
-    expect(t2.linearSearch(332)).to.equal(7);
+    expect(t2.binarySearch(332)).to.equal(7);
   });
   it('Linear 3', function () {
     let t3 = new Search(tdd3);
-    expect(t3.linearSearch(6)).to.equal(4);
+    expect(t3.binarySearch(6)).to.equal(4);
   });
 });
