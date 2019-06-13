@@ -1,9 +1,9 @@
 export class Sorter {
-  array : number[];
+  array: number[];
   constructor(array: number[]) {
     this.array = array;
   }
-  bubbleSort () {
+  bubbleSort() {
     let swapped;
     do {
       swapped = false;
@@ -20,12 +20,13 @@ export class Sorter {
   }
 
   selectionSort() {
-    for(let i = 0; i < this.array.length; i ++) {
+    for (let i = 0; i < this.array.length; i++) {
       let min = i;
-      for(let j = i + 1; j < this.array.length; j++) {
-        if(this.array[min] > this.array[j]) min = j;
+      for (let j = i + 1; j < this.array.length; j++) {
+        if (this.array[min] > this.array[j]) min = j;
       }
-      if(min !== i) [this.array[i], this.array[min]] = [this.array[min], this.array[i]];
+      if (min !== i)
+        [this.array[i], this.array[min]] = [this.array[min], this.array[i]];
     }
     return this.array;
   }
@@ -34,7 +35,7 @@ export class Sorter {
     const len = this.array.length;
     for (let i = 0; i < len; i++) {
       let el = this.array[i];
-      let j:number;
+      let j: number;
 
       for (j = i - 1; j >= 0 && this.array[j] > el; j--) {
         this.array[j + 1] = this.array[j];
@@ -43,38 +44,35 @@ export class Sorter {
     }
     return this.array;
   }
+
   mergeSort(arr) {
     if (arr.length === 1) {
       // return once we hit an array with a single item
-      return arr
+      return arr;
     }
-  
-    const middle = Math.floor(arr.length / 2) // get the middle item of the array rounded down
-    const left =arr.slice(0, middle) // items on the left side
-    const right = arr.slice(middle) // items on the right side
-  
-    return this.merge(
-      this.mergeSort(left),
-      this.mergeSort(right)
-    )
+
+    const middle = Math.floor(arr.length / 2); // get the middle item of the array rounded down
+    const left = arr.slice(0, middle); // items on the left side
+    const right = arr.slice(middle); // items on the right side
+
+    return this.merge(this.mergeSort(left), this.mergeSort(right));
   }
 
-  merge (left, right) {
-    let result = []
-    let indexLeft = 0
-    let indexRight = 0
-  
+  merge(left, right) {
+    let result = [];
+    let indexLeft = 0;
+    let indexRight = 0;
+
     while (indexLeft < left.length && indexRight < right.length) {
       if (left[indexLeft] < right[indexRight]) {
-        result.push(left[indexLeft])
-        indexLeft++
+        result.push(left[indexLeft]);
+        indexLeft++;
       } else {
-        result.push(right[indexRight])
-        indexRight++
+        result.push(right[indexRight]);
+        indexRight++;
       }
     }
-  
-    return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight))
+
+    return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
   }
 }
-
